@@ -429,6 +429,9 @@ func correctDockerConfigEnvVar(config *protecodeExecuteScanOptions) {
 }
 
 func getTarName(config *protecodeExecuteScanOptions) string {
+	if len(config.FilePath) > 0 {
+		return config.FilePath
+	}
 	// remove original version
 	fileName := strings.TrimSuffix(config.ScanImage, ":"+config.Version)
 	// remove sha digest if exists
